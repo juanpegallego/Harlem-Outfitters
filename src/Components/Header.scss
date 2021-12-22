@@ -1,0 +1,20 @@
+.header{
+    background-color: rgb(72, 73, 141);
+    height: 80px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    h1{
+
+        margin-right: auto;
+        padding-left: 10px;
+        color: white;
+    }
+
+    .header__nav{
+
+        background-color: red;
+        color: red;
+    }
+}
+
