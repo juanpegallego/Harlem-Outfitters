@@ -17,15 +17,14 @@ function ItemCount({stock, initial,setInitial, product, onAdd}) {
     const RemoveItem = () => {
         setInitial(initial - 1);
 
-        if (initial < 1){
-            setInitial(0)
+        if (initial < 2){
+            setInitial(1)
         }
     }
 
     return (
         <div className='itemcount__container'>
 
-            <h3>{product} </h3>
             <h4>Stock: {stock}</h4>
 
             <div className='controls__container'>

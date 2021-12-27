@@ -1,14 +1,13 @@
 import './App.scss';
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
-import ItemListContainer from './Components/ItemListContainer';
-
+import Main from './Main';
 
 function App() {
   return (
     <>
       <Header/>
-      <ItemListContainer greeting={"Bienvenidos"}/>
+      <Main/>
       <Footer/>
 
     </>
