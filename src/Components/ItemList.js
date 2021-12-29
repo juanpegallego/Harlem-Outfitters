@@ -1,13 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Item from './Item'
 
-const productosIniciales = [
-    {id:1, nombre: "Producto 1", stock: 5, precio:20},
-    {id:2, nombre: "Producto 2", stock: 50, precio:120},
-    {id:3, nombre: "Producto 3", stock: 500, precio:300},
-    {id:4, nombre: "Producto 4", stock: 25, precio:200},
-    {id:5, nombre: "Producto 5", stock: 250, precio:190},
-]
+
 
 function ItemList() {
     const [productData, setProductData] = useState([])
@@ -17,48 +11,39 @@ function ItemList() {
 
     const promesa = new Promise((res, rej) => {
         setTimeout(() => {
-            console.log('Soy el timeout')
-            res(productosIniciales)
+            fetch('https://fakestoreapi.com/products')
+                .then(res => res.json())
+                .then(json => res(json))
+
         }, 2000);
     })
 
-    promesa.then((productos)=>{
+    promesa.then((productos) => {
         setLoading(false)
         setProductData(productos)
-        console.log(productData)
     })
-    promesa.catch(()=>{})
+
+   
 
     if (loading) {
         return (
             <p>
-                Cargando la info, espera unos segundos.
+                Cargando los productos, espere unos segundos.
             </p>
         )
     } else {
         return (
-
-            productData.map(item => 
+            productData.map(item =>                
                 <Item
-                    productTitle={item.nombre}
+                    productTitle={item.title}
                     productId={item.id}
-                    productPrice={item.precio}
+                    productPrice={item.price}
                     stock={item.stock}
-                    />
-                )
-
-
-            
+                    image={item.image}
+                />
+            )
         )
     }
-
-
-
-
-
-
-
-
 }
 
 export default ItemList
