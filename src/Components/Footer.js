@@ -1,5 +1,5 @@
 import Nav from "./Nav"
-import "./Footer.css"
+import "./Footer.scss"
 
 const Footer = () => {
     return (

@@ -1,27 +1,42 @@
 import React, { useState, useEffect } from 'react'
 import Item from './Item'
 
+import { useParams } from 'react-router-dom' 
 
 
 function ItemList() {
     const [productData, setProductData] = useState([])
     const [loading, setLoading] = useState(true)
+    const {id} = useParams()
+    let dataUrl = ''
+
+    useEffect(() => {
+
+        if(id){
+            dataUrl = `https://fakestoreapi.com/products/category/${id}`
+        } else {
+            dataUrl = 'https://fakestoreapi.com/products'
+        }
 
 
+        const promesa = new Promise((res, rej) => {
+            setTimeout(() => {
+                fetch(dataUrl)
+                    .then(res => res.json())
+                    .then(json => res(json))
+                    .catch(() => console.log("Algo falló"))
+                    
+    
+            }, 2000);
+        })
+    
+        promesa.then((productos) => {
+            setLoading(false)
+            setProductData(productos)
+        })
+    }, [id])
 
-    const promesa = new Promise((res, rej) => {
-        setTimeout(() => {
-            fetch('https://fakestoreapi.com/products')
-                .then(res => res.json())
-                .then(json => res(json))
-
-        }, 2000);
-    })
-
-    promesa.then((productos) => {
-        setLoading(false)
-        setProductData(productos)
-    })
+    
 
    
 
@@ -33,13 +48,13 @@ function ItemList() {
         )
     } else {
         return (
-            productData.map(item =>                
+            productData.map(producto =>                
                 <Item
-                    productTitle={item.title}
-                    productId={item.id}
-                    productPrice={item.price}
-                    stock={item.stock}
-                    image={item.image}
+                    productTitle={producto.title}
+                    productId={producto.id}
+                    productPrice={producto.price}
+                    stock={producto.stock}
+                    image={producto.image}
                 />
             )
         )

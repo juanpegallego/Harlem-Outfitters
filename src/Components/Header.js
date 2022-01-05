@@ -1,10 +1,17 @@
 import Nav from "./Nav";
 import "./Header.scss"
+import { Link } from "react-router-dom";
 
-const Header = () => {
+const Header = ({links, titulo}) => {
     return (
         <header className="header">
-            <Nav/>
+            <Link to='/'>
+                <h1>{titulo}</h1>
+            </Link>    
+
+            <Nav
+                links={links}
+            />
             
         </header>
     )

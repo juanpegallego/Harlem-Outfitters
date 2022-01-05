@@ -15,7 +15,7 @@ function ItemDetail({ title, id, price, stock, image, description}) {
 
 
     return (
-        <div className='item__container'>
+        <div className='item__detail__container'>
             <div className='img__container'>
                 <img src={image} />
                 <p>{description}</p>

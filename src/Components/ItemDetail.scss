@@ -1,8 +1,8 @@
-.item__container{
-    width: 40vw;
+.item__detail__container{
+    width: 80vw;
+    margin: 50px auto;
     display: grid;
     grid-template-columns: 60% 40%;
-    margin: 50px;
     .img__container{
         display: flex;
         flex-direction: column;
@@ -13,8 +13,9 @@
             height: 300px;
         }
         p{
-            width: 90%;
+            width: 70%;
             font-size: 1rem;
+            margin-top: 20px;
             text-align: justify;
         }
     }
@@ -40,12 +41,12 @@
         }
         .btn{
             font-size: 1rem;
-            padding: 5px 8px;
+            padding: 8px 12px;
             color: green;
             font-weight: bold;
             border:2px solid  green;
             cursor: pointer;
-
+            min-width: 200px;
             &:hover{
                 background-color: green;
                 color: white;

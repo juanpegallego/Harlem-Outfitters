@@ -1,29 +1,50 @@
 import React, { useState, useEffect } from 'react'
 import ItemDetail from './ItemDetail'
 
+import { useParams } from 'react-router-dom'
+
 
 
 function ItemDetailContainer() {
     const [productData, setProductData] = useState([])
     const [loading, setLoading] = useState(true)
+    const { id } = useParams()
+    let dataUrl = ''
 
 
 
-    const promesa = new Promise((res, rej) => {
-        setTimeout(() => {
-            fetch('https://fakestoreapi.com/products/1')
+    useEffect(() => {
+
+
+
+        if (id) {
+            dataUrl = `https://fakestoreapi.com/products/${id}`
+        } else {
+            dataUrl = 'https://fakestoreapi.com/products'
+        }
+
+        const promesa = new Promise((res, rej) => {
+            fetch(dataUrl)
                 .then(res => res.json())
                 .then(json => res(json))
+                .catch(() => console.log('algo fallo'))
 
-        }, 2000);
-    })
+            
+        })
 
-    promesa.then((productos) => {
-        setLoading(false)
-        setProductData(productos)  
-    })
+        promesa.then((productos) => {
+            setLoading(false)
+            setProductData(productos)
+        })
 
-   
+        console.log(id)
+    }, [id])
+
+
+
+
+
+
 
     if (loading) {
         return (
@@ -33,15 +54,15 @@ function ItemDetailContainer() {
         )
     } else {
         return (
-                           
-                <ItemDetail
-                    title={productData.title}
-                    id={productData.id}
-                    price={productData.price}
-                    image={productData.image}
-                    description={productData.description}
-                />
-            
+
+            <ItemDetail
+                title={productData.title}
+                id={productData.id}
+                price={productData.price}
+                image={productData.image}
+                description={productData.description}
+            />
+
         )
     }
 }

@@ -7,4 +7,10 @@ footer{
     align-items: center;
     background-color: rgb(20, 20, 71);
     height: 80px;
+    opacity: .25;
+    transition: all 2s;
+    &:hover{
+        opacity: 1;
+        transition: all .25s;
+    }
 }
