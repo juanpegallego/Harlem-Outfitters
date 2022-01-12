@@ -9,26 +9,24 @@ nav{
     min-width: 200px;
     padding: 10px;
     font-family: Oswald, serif;
+    right: 0px;
+    position: absolute;
     a{
         color: white;
         text-decoration: none;
-        margin: 10px;
+        margin: 15px;
         font-size: 1.5rem;
         &:hover{
             color: grey;
         }
-    }
 
-    .icon{
-        font-size: 2.5rem;
-        margin-left: auto;
-        position: relative;
-        right: -200px;
-        cursor: pointer;
-        color: white;
-        &:hover{
-            color: grey;
+        h1{
+            color: white;
         }
     }
+
+    
+
+    
 }
 

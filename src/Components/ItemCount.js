@@ -1,25 +1,30 @@
-import React  from 'react'
+import { useState } from 'react'
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import './ItemCount.scss'
 
-function ItemCount({stock, initial,setInitial, product, onAdd}) {
-    
+function ItemCount({ stock, initial, onAdd }) {
+    const [contador, setContador] = useState(initial)
+
 
     const addItem = () => {
-        setInitial(initial + 1);
+        setContador(contador + 1);
 
-        if (initial >= stock){
-            setInitial(stock)
+        if (initial >= stock) {
+            setContador(stock)
         }
     }
-    
-    const RemoveItem = () => {
-        setInitial(initial - 1);
 
-        if (initial < 2){
-            setInitial(1)
+    const RemoveItem = () => {
+        setContador(initial - 1);
+
+        if (initial < 2) {
+            setContador(1)
         }
+    }
+
+    const confirmItem = () => {
+        onAdd(contador)
     }
 
     return (
@@ -28,22 +33,22 @@ function ItemCount({stock, initial,setInitial, product, onAdd}) {
             <h4>Stock: {stock}</h4>
 
             <div className='controls__container'>
-                <RemoveIcon 
+                <RemoveIcon
                     onClick={RemoveItem}
-                    className='controls__icon'/>
+                    className='controls__icon' />
 
-                {initial}
+                {contador}
 
-                <AddIcon 
+                <AddIcon
                     onClick={addItem}
-                    className='controls__icon'/>
+                    className='controls__icon' />
 
             </div>
 
 
-            <button 
-                onClick={onAdd}
-            >Agregar al carrito</button>
+            <button onClick={confirmItem}>
+                Agregar al carrito
+            </button>
         </div>
     )
 }

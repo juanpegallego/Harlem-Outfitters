@@ -1,20 +1,29 @@
 import CartWidget from "./CartWidget"
 import "./Nav.scss"
 import { Link } from "react-router-dom"
+import { useContext } from "react"
+import { contexto } from './AppContext'
 
 const Nav = ({ links }) => {
 
+    const test = useContext(contexto)
+
+    const { cantidad_total } = test
+
     if (links) {
         return (
-            <nav>
+            <nav >
+                <Link to={'/carrito'} >
+                    <CartWidget />
+                    {cantidad_total}
+                </Link>
+
                 {links.map((elemento, indice) => {
-                    return <Link key={indice} to={`/categoria/${elemento}`} className="nav__link">
+                    return <Link key={indice} to={`/categoria/${elemento}`} >
                         {elemento}
                     </Link>
                 })}
 
-
-                <CartWidget className="nav__icon" />
             </nav>
         )
     } else return null

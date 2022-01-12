@@ -1,15 +1,20 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import ItemCount from './ItemCount.js'
 import './ItemDetail.scss'
+import { contexto } from './AppContext'
 
-function ItemDetail({ title, id, price, stock, image, description}) {
+function ItemDetail({ title, id, price, stock, image, description }) {
 
     const [initial, setInitial] = useState(1);
     const [selectedItemCount, setSelectedItemCount] = useState(0);
+    const { agregarProducto } = useContext(contexto)
+    const producto = { title, id, price, stock, image, description }
 
-    const onAdd = () => {
+    const onAdd = (cantidad) => {
+        agregarProducto(producto, cantidad)
         if (initial > 0) {
             setSelectedItemCount(initial)
+
         }
     }
 
@@ -28,7 +33,7 @@ function ItemDetail({ title, id, price, stock, image, description}) {
                     <h2>$ {price * 50}</h2>
                     <h3>O en 3 cuotas de $ {(price * 50 / 3).toFixed(2)} con Visa/Mastercard</h3>
                 </div>
-                    <ItemCount
+                <ItemCount
                     stock={stock}
                     onAdd={onAdd}
                     initial={initial}
@@ -37,12 +42,12 @@ function ItemDetail({ title, id, price, stock, image, description}) {
                 <button className='btn'>Comprar</button>
             </div>
 
-            
 
-            
-            
-            
-            
+
+
+
+
+
         </div>
     )
 }

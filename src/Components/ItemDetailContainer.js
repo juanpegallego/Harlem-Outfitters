@@ -10,7 +10,7 @@ function ItemDetailContainer() {
     const [loading, setLoading] = useState(true)
     const { id } = useParams()
     let dataUrl = ''
-
+    const stock = 10
 
 
     useEffect(() => {
@@ -29,7 +29,7 @@ function ItemDetailContainer() {
                 .then(json => res(json))
                 .catch(() => console.log('algo fallo'))
 
-            
+
         })
 
         promesa.then((productos) => {
@@ -37,7 +37,6 @@ function ItemDetailContainer() {
             setProductData(productos)
         })
 
-        console.log(id)
     }, [id])
 
 
@@ -61,6 +60,7 @@ function ItemDetailContainer() {
                 price={productData.price}
                 image={productData.image}
                 description={productData.description}
+                stock={stock}
             />
 
         )
