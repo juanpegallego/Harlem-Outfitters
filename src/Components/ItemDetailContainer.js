@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import ItemDetail from './ItemDetail'
-
+import { TailSpin } from 'react-loader-spinner';
 import { useParams } from 'react-router-dom'
 
 
@@ -43,13 +43,19 @@ function ItemDetailContainer() {
 
 
 
-
+    const loadingSpinnerContainerStyle = {
+        position: 'relative',
+        margin: 'auto',
+        display: 'flex',
+        justifyContent: 'center',
+        marginTop: '200px'
+    }
 
     if (loading) {
         return (
-            <p>
-                Cargando el detalle del producto, espere unos segundos.
-            </p>
+            <div style={loadingSpinnerContainerStyle}>
+                <TailSpin arialLabel="loading-indicator" color='blue' height={100} width={100} />
+            </div>
         )
     } else {
         return (

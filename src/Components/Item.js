@@ -1,32 +1,45 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import ItemCount from './ItemCount.js'
 import './Item.scss'
 import { Link } from 'react-router-dom'
+import { contexto } from './AppContext'
 
-function Item({ productTitle, productId, productPrice, stock, image }) {
+import Swal from 'sweetalert2'
+
+function Item({ title, id, price, stock, image }) {
 
     const [initial, setInitial] = useState(1);
-    const [selectedItemCount, setSelectedItemCount] = useState(0);
+    const { agregarProducto, isInCart } = useContext(contexto)
+    const producto = { title, id, price, stock, image }
 
-    const onAdd = () => {
-        if (initial > 0) {
-            setSelectedItemCount(initial)
-        }
+
+
+    const errorNotification = (producto) => {
+        Swal.fire({
+            title: 'Ya lo agregaste',
+            text: `El producto ${producto} ya existe en tu carrito.`,
+            icon: 'error',
+            confirmButtonText: ' Volver'
+
+        })
+    }
+    const onAdd = (cantidad) => {
+        isInCart(producto.id) ? errorNotification(producto.title) : agregarProducto(producto, cantidad)
     }
 
 
     return (
         <div className='item__container'>
             <div className='title__container'>
-                <h3>{productTitle}</h3>
-                <p>ID Producto:{productId}</p>
-                <h2>$ {productPrice * 50}</h2>
-                <h3> O 3 cuotas de $ {(productPrice * 50 / 3).toFixed(2)} con Visa/Mastercard</h3>
-                
+                <h3>{title}</h3>
+                <p>ID Producto:{id}</p>
+                <h2>U$D {price}</h2>
+                <h3> O 3 cuotas de U$D {(price / 3).toFixed(2)} con Visa/Mastercard</h3>
+
             </div>
 
             <img src={image} />
-            <Link to={`/products/${productId}`}>Ver mas</Link>
+            <Link to={`/products/${id}`}>Ver mas</Link>
             <ItemCount
                 stock={stock}
                 onAdd={onAdd}

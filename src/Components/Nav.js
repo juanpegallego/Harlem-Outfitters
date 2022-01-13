@@ -13,7 +13,7 @@ const Nav = ({ links }) => {
     if (links) {
         return (
             <nav >
-                <Link to={'/carrito'} >
+                <Link to={'/cart'} >
                     <CartWidget />
                     {cantidad_total}
                 </Link>
