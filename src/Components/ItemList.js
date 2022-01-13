@@ -52,6 +52,7 @@ function ItemList() {
         return (
             productData.map(producto =>
                 <Item
+                    key={producto.id}
                     title={producto.title}
                     id={producto.id}
                     price={producto.price}

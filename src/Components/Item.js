@@ -38,7 +38,7 @@ function Item({ title, id, price, stock, image }) {
 
             </div>
 
-            <img src={image} />
+            <img src={image} alt={title} />
             <Link to={`/products/${id}`}>Ver mas</Link>
             <ItemCount
                 stock={stock}

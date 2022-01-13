@@ -8,7 +8,6 @@ function ItemDetail({ title, id, price, stock, image, description }) {
 
     const [initial, setInitial] = useState(1);
     const [showCounter, setShowCounter] = useState(true)
-    const [selectedItemCount, setSelectedItemCount] = useState(0);
     const { agregarProducto } = useContext(contexto)
     const producto = { title, id, price, stock, image, description }
 
@@ -26,16 +25,13 @@ function ItemDetail({ title, id, price, stock, image, description }) {
         agregarProducto(producto, cantidad)
         setShowCounter(false)
         successNotification(cantidad)
-        if (initial > 0) {
-            setSelectedItemCount(initial)
 
-        }
     }
 
     return (
         <div className='item__detail__container'>
             <div className='img__container'>
-                <img src={image} />
+                <img src={image} alt={title} />
                 <p>{description}</p>
             </div>
             <div className='right__container'>

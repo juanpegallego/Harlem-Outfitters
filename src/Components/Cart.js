@@ -1,9 +1,8 @@
 import React, { useContext } from 'react'
 import { contexto } from './AppContext'
-import Item from './Item'
 function Cart() {
 
-    const { carrito, cantidad_total, precio_total, limpiarCarrito } = useContext(contexto)
+    const { cantidad_total, precio_total, limpiarCarrito } = useContext(contexto)
 
 
 
