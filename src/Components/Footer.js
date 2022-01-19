@@ -5,7 +5,7 @@ const Footer = () => {
     return (
         <footer>
             <Nav />
-            <p>Copyright  2021 - Harlem </p>
+            <p>Copyright  2021 - Harlem Outfitters </p>
         </footer>
     )
 }

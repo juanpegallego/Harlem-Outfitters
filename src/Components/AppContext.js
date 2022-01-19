@@ -1,22 +1,14 @@
 import React, { useState, createContext } from 'react';
+import { successNotification } from './Notification'
 
-import Swal from 'sweetalert2'
 
 export const contexto = createContext({
     carrito: [],
     precio_total: 0,
-    cantidad_total: 0
+    cantidad_total: 0,
+    cantidad: 0
 })
 
-const successNotification = (cantidad) => {
-    Swal.fire({
-        title: 'Agregado al carrito',
-        text: `${cantidad} unidades.`,
-        icon: 'success',
-        confirmButtonText: ' Continuar'
-
-    })
-}
 
 const { Provider } = contexto
 
@@ -25,17 +17,21 @@ const CartProvider = ({ children }) => {
     const [carrito, setCarrito] = useState([])
     const [precio_total, setPrecio_total] = useState(0)
     const [cantidad_total, setCantidad_total] = useState(0)
+    const [cantidadProductoElegido, setCantidadProductoElegido] = useState(0)
 
     const agregarProducto = (producto, cantidad) => {
+        setCantidadProductoElegido(cantidad)
         setCarrito([...carrito, producto])
         setCantidad_total(cantidad_total + cantidad)
         setPrecio_total(precio_total + producto.price * cantidad)
         successNotification(cantidad)
+
     }
 
-    const eliminarProducto = (id) => {
-        const indexToEliminate = carrito.indexOf(id)
-        carrito.splice(indexToEliminate, 1)
+
+
+    const eliminarProducto = (idToEliminate) => {
+        setCarrito(carrito.filter(item => item.id !== idToEliminate));
     }
 
     const limpiarCarrito = () => {
@@ -56,6 +52,7 @@ const CartProvider = ({ children }) => {
         carrito,
         precio_total,
         cantidad_total,
+        cantidadProductoElegido,
         agregarProducto,
         eliminarProducto,
         limpiarCarrito,

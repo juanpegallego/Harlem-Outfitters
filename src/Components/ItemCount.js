@@ -10,7 +10,7 @@ function ItemCount({ stock, initial, onAdd }) {
     const addItem = () => {
         setContador(contador + 1);
 
-        if (initial >= stock) {
+        if (contador >= stock) {
             setContador(stock)
         }
     }
@@ -30,7 +30,7 @@ function ItemCount({ stock, initial, onAdd }) {
     return (
         <div className='itemcount__container'>
 
-            <h4>Stock: {stock}</h4>
+            <h4>Stock: {stock} unidades</h4>
 
             <div className='controls__container'>
                 <RemoveIcon

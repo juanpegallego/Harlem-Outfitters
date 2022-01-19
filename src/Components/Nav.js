@@ -6,20 +6,19 @@ import { contexto } from './AppContext'
 
 const Nav = ({ links }) => {
 
-    const test = useContext(contexto)
 
-    const { cantidad_total } = test
+    const { cantidad_total } = useContext(contexto)
+
 
     if (links) {
         return (
             <nav >
                 <Link to={'/cart'} >
-                    <CartWidget />
-                    {cantidad_total}
+                    {cantidad_total > 0 ? <CartWidget cantidad_total={cantidad_total} /> : null}
                 </Link>
 
                 {links.map((elemento, indice) => {
-                    return <Link key={indice} to={`/categoria/${elemento}`} >
+                    return <Link key={indice} to={`/categoria/${elemento.toLowerCase()}`} >
                         {elemento}
                     </Link>
                 })}

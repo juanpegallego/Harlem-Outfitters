@@ -10,7 +10,7 @@ import CartProvider from './Components/AppContext';
 
 function App() {
 
-  const links = ['electronics', 'jewelery']
+  const links = ['Electronics', 'Jewelery']
   const titulo = 'Harlem Outfitters'
 
 
