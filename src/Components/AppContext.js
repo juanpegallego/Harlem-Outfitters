@@ -9,7 +9,6 @@ export const contexto = createContext({
     cantidad: 0
 })
 
-
 const { Provider } = contexto
 
 const CartProvider = ({ children }) => {
@@ -28,10 +27,15 @@ const CartProvider = ({ children }) => {
 
     }
 
+    const eliminarProducto = (idAEliminar, cantidad, productPrice) => {
+        setCarrito(carrito.filter(item => item.id !== idAEliminar));
+        setPrecio_total(precio_total - productPrice * cantidad)
+        setCantidad_total(cantidad_total - cantidad)
 
-
-    const eliminarProducto = (idToEliminate) => {
-        setCarrito(carrito.filter(item => item.id !== idToEliminate));
+        if (carrito.length === 0) {
+            limpiarCarrito()
+            console.log('carrito desde adentro del if', carrito);
+        }
     }
 
     const limpiarCarrito = () => {
@@ -41,12 +45,11 @@ const CartProvider = ({ children }) => {
     }
 
     const isInCart = (id) => {
-        if (id in carrito) {
-            return true
-        } else {
-            return false
-        }
+        const buscaId = (element) => element.id === id
+        const respuesta = carrito.some(buscaId);
+        return respuesta
     }
+
 
     const valorDelContexto = {
         carrito,

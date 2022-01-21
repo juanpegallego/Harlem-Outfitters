@@ -16,9 +16,9 @@ function ItemCount({ stock, initial, onAdd }) {
     }
 
     const RemoveItem = () => {
-        setContador(initial - 1);
+        setContador(contador - 1);
 
-        if (initial < 2) {
+        if (contador < 2) {
             setContador(1)
         }
     }

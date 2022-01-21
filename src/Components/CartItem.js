@@ -1,28 +1,36 @@
 import React from 'react';
 import './CartItem.scss'
+import { Link } from 'react-router-dom'
 
-function CartItem({ cantidad, productTitle, productPrice, productImg, eliminarProducto, productId }) {
 
+function CartItem({ cantidad, productTitle, productPrice, eliminarProducto, productId }) {
 
     return <div className='cartitem__container'>
 
-        <h2>{productTitle}</h2>
+        <h3>{productTitle}</h3>
 
-        <p> id producto{productId}</p>
+        <p> Producto ${productPrice}</p>
 
-        <h2>${productPrice}</h2>
-
-        <p>Precio total este producto $ {productPrice * cantidad}</p>
-
-        <img src={productImg} alt={productTitle} />
 
         <p> {cantidad} Unidades</p>
 
-        <button onClick={() => eliminarProducto(productId)}>
-            Eliminar producto
+
+        <p>Total  $ {productPrice * cantidad}</p>
+
+
+
+        <Link to={`/products/${productId}`}>
+            <button className='btn' onClick={() => eliminarProducto(productId, cantidad, productPrice)}>Editar cantidad</button>
+        </Link>
+
+        <button onClick={() => eliminarProducto(productId, cantidad, productPrice)}>
+            Eliminar
         </button>
 
-    </div>;
+    </div >
 }
+
+
+
 
 export default CartItem;
