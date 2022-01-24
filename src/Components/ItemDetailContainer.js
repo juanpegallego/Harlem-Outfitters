@@ -2,45 +2,37 @@ import React, { useState, useEffect } from 'react'
 import ItemDetail from './ItemDetail'
 import { TailSpin } from 'react-loader-spinner';
 import { useParams } from 'react-router-dom'
-
+import db from './Firebase'
+import { collection, getDocs, where, query, doc, snapShot } from "@firebase/firestore"
 
 
 function ItemDetailContainer() {
     const [productData, setProductData] = useState([])
     const [loading, setLoading] = useState(true)
     const { id } = useParams()
-    let dataUrl = ''
-    const stock = 10
+
+
 
 
     useEffect(() => {
 
+        const coleccionProductos = collection(db, "camisetas")
+        const filtro = where('id', '==', parseInt(id))
+        const consulta = query(coleccionProductos, filtro)
+        const pedido = getDocs(consulta);
 
+        pedido
+            .then((resultado) => {
+                const data = resultado.docs.map(doc => ({ id, ...doc.data() }))
+                setProductData(data[0]);
+                setLoading(false)
+            })
+            .catch((error) => {
+                console.log(error);
+            })
 
-        if (id) {
-            dataUrl = `https://fakestoreapi.com/products/${id}`
-        } else {
-            dataUrl = 'https://fakestoreapi.com/products'
-        }
-
-        const promesa = new Promise((res, rej) => {
-            fetch(dataUrl)
-                .then(res => res.json())
-                .then(json => res(json))
-                .catch(() => console.log('algo fallo'))
-
-
-        })
-
-        promesa.then((productos) => {
-            setLoading(false)
-            setProductData(productos)
-        })
 
     }, [id])
-
-
-
 
 
     const loadingSpinnerContainerStyle = {
@@ -66,7 +58,7 @@ function ItemDetailContainer() {
                 price={productData.price}
                 image={productData.image}
                 description={productData.description}
-                stock={stock}
+                stock={productData.stock}
             />
 
         )

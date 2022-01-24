@@ -13,8 +13,8 @@ function Item({ title, id, price, stock, image }) {
             <div className='title__container'>
                 <h3>{title}</h3>
                 <p>ID Producto:{id}</p>
-                <h2>U$D {price}</h2>
-                <h4>O 3 cuotas de U$D {(price / 3).toFixed(2)} con Visa/Mastercard</h4>
+                <h2>${price}</h2>
+                <h4>O 3 cuotas de $ {(price / 3).toFixed(2)} con Visa/Mastercard</h4>
 
             </div>
 

@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react'
 import Item from './Item'
 import { TailSpin } from 'react-loader-spinner';
 import { useParams } from 'react-router-dom'
-
+import db from './Firebase'
+import { collection, getDocs, doc } from "@firebase/firestore"
 
 function ItemList() {
     const [productData, setProductData] = useState([])
@@ -10,32 +11,24 @@ function ItemList() {
     const { id } = useParams()
     let dataUrl = ''
 
+
+
     useEffect(() => {
+        const coleccionProductos = collection(db, 'camisetas')
 
-        if (id) {
-            dataUrl = `https://fakestoreapi.com/products/category/${id}`
-        } else {
-            dataUrl = 'https://fakestoreapi.com/products'
-        }
+        const pedido = getDocs(coleccionProductos)
 
-
-        const promesa = new Promise((res, rej) => {
-            setTimeout(() => {
-                fetch(dataUrl)
-                    .then(res => res.json())
-                    .then(json => res(json))
-                    .catch(() => console.log("Algo falló"))
+        pedido
+            .then((resultado) => {
+                setProductData(resultado.docs.map(doc => ({ id: doc.id, ...doc.data() })))
+                setLoading(false)
+            })
+            .catch((error) => {
+                console.log(error);
+            })
 
 
-            }, 2000);
-        })
-
-        promesa.then((productos) => {
-            setLoading(false)
-            setProductData(productos)
-        })
     }, [id])
-
 
     const loadingSpinnerContainerStyle = {
         marginTop: '200px'
