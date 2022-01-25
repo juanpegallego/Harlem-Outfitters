@@ -11,6 +11,26 @@ const successNotification = (cantidad) => {
     })
 }
 
+const successOrder = (cantidad) => {
+    Swal.fire({
+        title: 'Pedido procesado correctamente',
+        text: `El codigo de su orden es ${cantidad} .`,
+        icon: 'success',
+        confirmButtonText: 'Continuar'
+
+    })
+}
+
+const errorOrder = (message) => {
+    Swal.fire({
+        title: 'Error al procesar su orden',
+        text: message,
+        icon: 'error',
+        confirmButtonText: 'Continuar'
+
+    })
+}
+
 const errorNotification = (producto) => {
     Swal.fire({
         title: 'Ya lo agregaste',
@@ -21,4 +41,4 @@ const errorNotification = (producto) => {
     })
 }
 
-export { successNotification, errorNotification }
+export { successNotification, errorNotification, successOrder, errorOrder }

@@ -3,7 +3,7 @@ import ItemDetail from './ItemDetail'
 import { TailSpin } from 'react-loader-spinner';
 import { useParams } from 'react-router-dom'
 import db from './Firebase'
-import { collection, getDocs, where, query, doc, snapShot } from "@firebase/firestore"
+import { collection, getDocs, where, query } from "@firebase/firestore"
 
 
 function ItemDetailContainer() {

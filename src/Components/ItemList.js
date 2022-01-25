@@ -3,13 +3,12 @@ import Item from './Item'
 import { TailSpin } from 'react-loader-spinner';
 import { useParams } from 'react-router-dom'
 import db from './Firebase'
-import { collection, getDocs, doc } from "@firebase/firestore"
+import { collection, getDocs } from "@firebase/firestore"
 
 function ItemList() {
     const [productData, setProductData] = useState([])
     const [loading, setLoading] = useState(true)
     const { id } = useParams()
-    let dataUrl = ''
 
 
 

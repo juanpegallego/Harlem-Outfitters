@@ -11,7 +11,9 @@ function CartContainer() {
 
     return <div>
         {carrito.length > 0 ?
-            <Cart /> : <div>
+            <Cart />
+            :
+            <div>
                 <h1>Tu carrito esta vacio! </h1>
                 <Link to={'/'}>
                     <button >Volver al inicio</button>
