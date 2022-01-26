@@ -18,7 +18,7 @@ function Item({ title, id, price, stock, image }) {
 
             </div>
 
-            <img src={image} alt={title} />
+            <img src={image} alt={title} rel="preconnect" />
             <Link to={`/products/${id}`}>
                 <button className='btn'>
                     Ver mas

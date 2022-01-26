@@ -2,9 +2,18 @@ import Swal from 'sweetalert2'
 
 
 const successNotification = (cantidad) => {
+
+    let addedToCartMessage = ''
+
+    if (cantidad > 1) {
+        addedToCartMessage = `${cantidad} unidades.`
+    } else {
+        addedToCartMessage = `${cantidad} unidad.`
+    }
+
     Swal.fire({
         title: 'Agregado al carrito',
-        text: `${cantidad} unidades.`,
+        text: addedToCartMessage,
         icon: 'success',
         confirmButtonText: ' Continuar'
 

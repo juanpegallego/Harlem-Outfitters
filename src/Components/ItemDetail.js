@@ -14,10 +14,7 @@ function ItemDetail({ title, id, price, stock, image, description }) {
 
     const onAdd = (cantidad) => {
         producto.cantidad = cantidad
-
         isInCart(producto.id) ? errorNotification(producto.title) : agregarProducto(producto, cantidad)
-
-
     }
 
     return (

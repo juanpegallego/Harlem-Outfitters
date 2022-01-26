@@ -18,6 +18,8 @@ const CartProvider = ({ children }) => {
     const [cantidad_total, setCantidad_total] = useState(0)
     const [cantidadProductoElegido, setCantidadProductoElegido] = useState(0)
 
+
+
     const agregarProducto = (producto, cantidad) => {
         setCantidadProductoElegido(cantidad)
         setCarrito([...carrito, producto])

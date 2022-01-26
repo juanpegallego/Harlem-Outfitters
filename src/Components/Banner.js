@@ -1,5 +1,5 @@
 import React from 'react';
-
+import './Fonts.scss'
 
 
 function Banner({ title, subtitle, bgcColor, fontColor, height, image, fontSize }) {
@@ -16,7 +16,8 @@ function Banner({ title, subtitle, bgcColor, fontColor, height, image, fontSize 
         justifyContent: 'space-evenly',
         fontFamily: 'Calibri',
         overflow: 'hidden',
-        fontSize: fontSize
+        fontSize: fontSize,
+        fontFamily: 'Montserrat, Sans Serif'
     }
 
     const imgStyle = {

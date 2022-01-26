@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom'
 
 
 
-function Cart() {
+function Cart({ setCartMessage }) {
     const { cantidad_total, precio_total, limpiarCarrito,
         cantidadProductoElegido, carrito, eliminarProducto } = useContext(contexto)
     const [clientData, setClientData] = useState({
@@ -60,6 +60,8 @@ function Cart() {
             })
             setOrderFinished(true);
             getOrderId()
+
+
         } catch (e) {
             errorOrder('Hubo un error, vuelva a intentarlo');
         }
@@ -73,9 +75,14 @@ function Cart() {
         pedido
             .then((resultado) => {
                 const data = resultado.docs.map(doc => ({ id: doc.id, ...doc.data() }))
-                const orderId = data[0].id
-                successOrder(orderId);
+                const orderId = data[0].id.slice(0, 5)
 
+
+                setTimeout(() => {
+                    successOrder(orderId);
+                    setCartMessage(`Recuerde enviarnos el codigo de reserva: ${orderId} a nuestro whatsapp para continuar con el pago.`)
+                    limpiarCarrito()
+                }, 1000);
             })
             .catch((error) => {
                 console.log(error);
