@@ -2,7 +2,7 @@ import React from 'react';
 import './Fonts.scss'
 
 
-function Banner({ title, subtitle, bgcColor, fontColor, height, image, fontSize }) {
+function Banner({ title, subtitle, bgcColor, fontColor, height, image, fontSize, alignment }) {
 
     const styles = {
         width: '100%',
@@ -12,12 +12,13 @@ function Banner({ title, subtitle, bgcColor, fontColor, height, image, fontSize 
         height: height,
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'left',
+        alignItems: alignment,
         justifyContent: 'space-evenly',
         fontFamily: 'Calibri',
         overflow: 'hidden',
         fontSize: fontSize,
-        fontFamily: 'Montserrat, Sans Serif'
+        fontFamily: 'Montserrat, Sans Serif',
+
     }
 
     const imgStyle = {

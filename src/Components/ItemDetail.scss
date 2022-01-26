@@ -1,9 +1,9 @@
 .item__detail__container{
-    width: 80vw;
+    width: 70vw;
     margin: 50px auto;
-    min-height: 70vh;
+    min-height: 80vh;
     display: grid;
-    grid-template-columns: 60% 40%;
+    grid-template-columns: 50% 50%;
     padding-bottom: 150px;
     .img__container{
         display: flex;
@@ -13,6 +13,12 @@
         img{
             width: 300px;
             height: 300px;
+            
+            transition: all 1.25s;
+            &:hover{
+                transform:scale(1.75);
+                transition: all .25s;
+            }
         }
         p{
             width: 70%;
@@ -22,18 +28,20 @@
         }
     }
     .right__container{
-        display: flex;
-        justify-content:space-evenly;
+        display: grid;
+        grid-template-columns: 50% 50%;
+        grid-column-gap: 30px;
+        justify-content:space-between;
         align-items: center;
-        flex-direction: column;
+        flex-direction: row;
         .title__container{
             text-align: center;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            min-height: 150px;
+            min-height: 300px;
             h1{
-                font-size: 1.5rem;
+                font-size: 2rem;
             }
             p{
                 font-size: 0.75rem;
@@ -43,31 +51,54 @@
             }
             h3{
                 font-size: 1rem;
-            }
-        }
-        .btn{
-            font-size: 1rem;
-            padding: 8px 12px;
-            color: green;
-            font-weight: bold;
-            border:1px solid  green;
-            cursor: pointer;
-            min-width: 200px;
-            margin-top: 20px;
-            &:hover{
-                background-color: green;
-                color: white;
+                color:rgb(35,36,70);
             }
         }
 
-        .btn__edit{
+        .right__container__navigation{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            a{
+                text-decoration: none;
+            }
+            .btn{
+                font-size: 1rem;
+                padding: 8px 12px;
+                font-weight: bold;
+                cursor: pointer;
+                min-width: 150px;
+                margin-top: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              
+            }
+
+            .btn__success{
+
+                color: green;
+
+                border:1px solid  green;
+                &:hover{
+                    background-color: green;
+                    color: white;
+                }
+            }
+        }
+
+        
+
+        /* .btn__edit{
             color: rgb(245, 210, 11);
             border:1px solid  rgb(245, 210, 11);
             &:hover{
                 background-color: rgb(245, 210, 11);
                 color: white;
             }
-        }
+        } */
     }
     
     

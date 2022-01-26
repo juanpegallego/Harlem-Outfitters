@@ -16,6 +16,9 @@ function Form({ setClientData }) {
 
         <label htmlFor="mail">Mail</label>
         <input type="email" name="mail" placeholder='Ingresa tu correo electronico' onChange={e => setClientData(clientData => ({ ...clientData, mail: e.target.value }))} />
+
+        <label htmlFor="adress">Domicilio</label>
+        <input type="text" name="adress" placeholder='Ingresa tu direccion de envio' onChange={e => setClientData(clientData => ({ ...clientData, adress: e.target.value }))} />
     </form>;
 }
 

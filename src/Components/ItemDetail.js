@@ -4,7 +4,7 @@ import './ItemDetail.scss'
 import { contexto } from './AppContext'
 import { Link } from 'react-router-dom'
 import { errorNotification } from './Notification'
-
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 function ItemDetail({ title, id, price, stock, image, description }) {
 
     const [initial, setInitial] = useState(1);
@@ -29,28 +29,40 @@ function ItemDetail({ title, id, price, stock, image, description }) {
                     <p>ID Producto:{id}</p>
                     <h2>$ {price}.-</h2>
                     <h3>O en 3 cuotas de $ {(price / 3).toFixed(2)}.- con Visa/Mastercard</h3>
+                    {showCounter && <ItemCount
+                        stock={stock}
+                        onAdd={onAdd}
+                        initial={cantidadProductoElegido ? cantidadProductoElegido : initial}
+                    />}
                 </div>
 
-                {showCounter && <ItemCount
-                    stock={stock}
-                    onAdd={onAdd}
-                    initial={cantidadProductoElegido ? cantidadProductoElegido : initial}
-                />}
 
 
-                {!showCounter &&
-                    <button className='btn btn__edit'
-                        onClick={setShowCounter}
-                    >Editar compra
-                    </button>}
+                <div className="right__container__navigation">
+                    {!showCounter &&
+                        <button className='btn btn__edit'
+                            onClick={setShowCounter}
+                        >Editar compra
+                        </button>}
 
-                <Link to={'/'}>
-                    <button className='btn'>Volver </button>
-                </Link>
+                    <Link to={'/'}>
+                        <button className='btn'>Volver </button>
+                    </Link>
+                    <Link to={'/cart'}>
+                        <button className='btn '>
+                            <ShoppingCartIcon /> Carrito
+                        </button>
+                    </Link>
 
-                <Link to={'/cart'}>
-                    <button className='btn'>Finalizar compra</button>
-                </Link>
+                    <Link to={'/cart'}>
+                        <button className='btn btn__success'>Finalizar compra</button>
+                    </Link>
+
+
+                </div>
+
+
+
             </div>
         </div >
     )

@@ -15,16 +15,19 @@ import { Link } from 'react-router-dom'
 function Cart({ setCartMessage }) {
     const { cantidad_total, precio_total, limpiarCarrito,
         cantidadProductoElegido, carrito, eliminarProducto } = useContext(contexto)
+
     const [clientData, setClientData] = useState({
         name: null,
         phone: null,
-        mail: null
+        mail: null,
+        adress: null
     })
     const [order, setOrder] = useState({
         buyer: {
             name: null,
             phone: null,
-            mail: null
+            mail: null,
+            adress: null
         },
         items: [],
         date: '',
@@ -40,7 +43,9 @@ function Cart({ setCartMessage }) {
 
         if (order.buyer.name !== null &&
             order.buyer.phone !== null &&
-            order.buyer.mail !== null) {
+            order.buyer.mail !== null &&
+            order.buyer.adress !== null
+        ) {
             setOrderInDB(order)
         }
         else {
@@ -58,7 +63,6 @@ function Cart({ setCartMessage }) {
                 'Cantidad': order.items[0].cantidad,
                 'Precio total': order.total
             })
-            setOrderFinished(true);
             getOrderId()
 
 
@@ -76,13 +80,12 @@ function Cart({ setCartMessage }) {
             .then((resultado) => {
                 const data = resultado.docs.map(doc => ({ id: doc.id, ...doc.data() }))
                 const orderId = data[0].id.slice(0, 5)
+                setOrderFinished(true);
+                successOrder(orderId);
+                setCartMessage(`Recuerde enviarnos el codigo de reserva: ${orderId} a nuestro whatsapp para continuar con el pago.`)
+                limpiarCarrito()
 
 
-                setTimeout(() => {
-                    successOrder(orderId);
-                    setCartMessage(`Recuerde enviarnos el codigo de reserva: ${orderId} a nuestro whatsapp para continuar con el pago.`)
-                    limpiarCarrito()
-                }, 1000);
             })
             .catch((error) => {
                 console.log(error);

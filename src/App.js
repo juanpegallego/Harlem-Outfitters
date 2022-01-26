@@ -4,21 +4,24 @@ import Footer from "./Components/Footer";
 import Main from './Main';
 import { BrowserRouter } from 'react-router-dom'
 import CartProvider from './Components/AppContext';
+import WhatsappWidget from './Components/WhatsappWidget';
 
 
 
 
 function App() {
 
-  const links = ['Accesorios', 'Camisetas']
+  const links = ['Como comprar', 'Nosotros']
   const titulo = 'Harlem Outfitters'
 
 
 
 
   return (
+
     <CartProvider>
       <BrowserRouter>
+        <WhatsappWidget />
         <Header
           links={links}
           titulo={titulo}

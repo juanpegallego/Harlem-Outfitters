@@ -1,6 +1,7 @@
 .header{
-    background-color: rgb(72, 73, 141);
-    height: 80px;
+    background: rgb(35,36,70);
+    background: linear-gradient(284deg, rgba(35,36,70,0.896796218487395) 0%, rgba(49,50,96,1) 13%, rgba(72,73,141,1) 54%);
+    height: 100px;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -13,6 +14,7 @@
             margin-right: auto;
             padding-left: 10px;
             color: white;
+            font-size: 2.5rem;
         }
     }
     

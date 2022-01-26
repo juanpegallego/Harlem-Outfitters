@@ -4,8 +4,9 @@ import "./Footer.scss"
 const Footer = () => {
     return (
         <footer>
-            <Nav />
+
             <p>Copyright  2021 - Harlem Outfitters </p>
+            <Nav />
         </footer>
     )
 }

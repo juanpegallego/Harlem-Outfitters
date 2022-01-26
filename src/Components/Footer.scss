@@ -3,10 +3,12 @@ footer{
     bottom: 0;
     width: 100%;
     display: flex;
+    flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
-    background-color: rgb(20, 20, 71);
-    height: 60px;
+    background: rgb(35,36,70);
+    background: linear-gradient(180deg, rgba(35,36,70,0.896796218487395) 0%, rgba(49,50,96,1) 13%, rgb(38, 39, 100) 54%);
+    height: 80px;
     opacity: .25;
     transition: all 2s;
     &:hover{
