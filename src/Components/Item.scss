@@ -9,10 +9,11 @@
     background-color: rgba(222, 233, 236, 0.562);
     padding: 20px;
     width: 300px;
-    height: 600px;
+    height: 550px;
     margin: 10px;
     font-family: Oswald, serif;
     overflow: hidden;
+    padding-bottom: 20px;
     .title__container{
         display: flex;
         justify-content: space-between;
@@ -43,9 +44,10 @@
     }
     
     img{
-        width: 80%;
+        width: 225px;
         margin: 20px;
         height: 225px;
+        object-fit: fill;
     }
 
     .btn{

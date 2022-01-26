@@ -14,7 +14,7 @@ const successNotification = (cantidad) => {
 const successOrder = (cantidad) => {
     Swal.fire({
         title: 'Pedido procesado correctamente',
-        text: `El codigo de su orden es ${cantidad} .`,
+        text: `El codigo de su orden es ${cantidad}, este es el codigo que nos deberas enviar por Whatsapp .`,
         icon: 'success',
         confirmButtonText: 'Continuar'
 

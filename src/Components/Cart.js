@@ -1,11 +1,16 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { contexto } from './AppContext'
 import './Cart.scss'
 import CartItem from './CartItem'
 import db from './Firebase'
-import { collection, addDoc } from "@firebase/firestore"
+import { collection, addDoc, getDocs } from "@firebase/firestore"
 import Form from './Form'
 import { successOrder, errorOrder } from './Notification'
+import { Link } from 'react-router-dom'
+
+
+
+
 
 function Cart() {
     const { cantidad_total, precio_total, limpiarCarrito,
@@ -26,26 +31,22 @@ function Cart() {
         total: ''
 
     })
+
+    const [orderFinished, setOrderFinished] = useState(false)
     const date = new Date()
 
     const confirmBuy = () => {
-        setOrder(order => ({
-            ...order,
-            buyer: clientData,
-            items: carrito,
-            date: date,
-            total: precio_total
-        }));
 
 
         if (order.buyer.name !== null &&
             order.buyer.phone !== null &&
-            order.buyer.mail !== null) { setOrderInDB(order) }
+            order.buyer.mail !== null) {
+            setOrderInDB(order)
+        }
         else {
             errorOrder('Complete sus datos por favor');
         }
     }
-
 
     const setOrderInDB = async (order) => {
         try {
@@ -57,20 +58,51 @@ function Cart() {
                 'Cantidad': order.items[0].cantidad,
                 'Precio total': order.total
             })
-            successOrder('41241');
+            setOrderFinished(true);
+            getOrderId()
         } catch (e) {
             errorOrder('Hubo un error, vuelva a intentarlo');
         }
     }
 
 
+    const getOrderId = () => {
+        const coleccionPedidos = collection(db, "pedidos")
+        const pedido = getDocs(coleccionPedidos);
+
+        pedido
+            .then((resultado) => {
+                const data = resultado.docs.map(doc => ({ id: doc.id, ...doc.data() }))
+                const orderId = data[0].id
+                successOrder(orderId);
+
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
+
+
+
+
+    useEffect(() => {
+        setOrder(order => ({
+            ...order,
+            buyer: clientData,
+            items: carrito,
+            date: date,
+            total: precio_total
+        }));
+    }, [clientData]);
+
 
 
 
     return (
         <div className='cart__container'>
-            <div className='selected__products__container'>
 
+            <div className='selected__products__container'>
+                <h1>Tus productos</h1>
                 {carrito.length > 0 && carrito.map(producto =>
                     < CartItem
                         key={producto.id}
@@ -82,19 +114,37 @@ function Cart() {
                         eliminarProducto={eliminarProducto}
                     />
                 )}
+
+
             </div>
+            <article className='form__row__container'>
 
-            <h1>Cantidad de productos: {cantidad_total} </h1>
-            <h2>Precio total: ${precio_total}</h2>
+                <Form confirmBuy={confirmBuy}
+                    setClientData={setClientData}
+                    clientData={clientData} />
 
-            <Form confirmBuy={confirmBuy}
-                setClientData={setClientData}
-                clientData={clientData} />
+                <div className='cart__navegation'>
 
-            <div className='cart__navegation'>
-                <button onClick={limpiarCarrito}>Vaciar carrito</button>
-                <button onClick={confirmBuy}>Finalizar compra</button>
-            </div>
+                    <aside className='selected__products__count'>
+                        <h2>Cantidad de items: {cantidad_total} </h2>
+                        <h2>Precio total:    ${precio_total}.-</h2>
+                    </aside>
+
+                    {orderFinished ?
+                        <div className='cart__navegation_btn'>
+                            <Link to={'/'}>
+                                <button>Volver al inicio</button>
+                            </Link>
+                        </div>
+                        :
+                        <div className='cart__navegation_btn'>
+                            <button onClick={confirmBuy}>Finalizar compra</button>
+                            <button onClick={limpiarCarrito}>Vaciar carrito</button>
+                        </div>
+                    }
+
+                </div>
+            </article>
 
         </div>
     )

@@ -30,8 +30,8 @@ function ItemDetail({ title, id, price, stock, image, description }) {
                 <div className='title__container'>
                     <h1>{title}</h1>
                     <p>ID Producto:{id}</p>
-                    <h2>U$D {price}</h2>
-                    <h3>O en 3 cuotas de U$D {(price / 3).toFixed(2)} con Visa/Mastercard</h3>
+                    <h2>$ {price}.-</h2>
+                    <h3>O en 3 cuotas de $ {(price / 3).toFixed(2)}.- con Visa/Mastercard</h3>
                 </div>
 
                 {showCounter && <ItemCount
