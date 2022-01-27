@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;400&display=swap');
+
+
 .item__detail__container{
     width: 70vw;
     margin: 50px auto;
@@ -5,11 +8,17 @@
     display: grid;
     grid-template-columns: 50% 50%;
     padding-bottom: 150px;
+    
+    font-family: Oswald, sans-serif;
     .img__container{
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
         align-items: center;
+        h1{
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
         img{
             width: 300px;
             height: 300px;
@@ -21,10 +30,8 @@
             }
         }
         p{
-            width: 70%;
-            font-size: 1.25rem;
-            margin-top: 20px;
-            text-align: justify;
+            font-size: 10px;                
+            text-align: right;
         }
     }
     .right__container{
@@ -38,20 +45,17 @@
             text-align: center;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            min-height: 300px;
-            h1{
-                font-size: 2rem;
-            }
-            p{
-                font-size: 0.75rem;
-            }
+            justify-content: space-evenly;
+            min-height: 350px;
+            
+            color:rgb(35,36,70);
             h2{
-                font-size: 1.5rem;
+                font-size: 30px;
+                margin: 20px 0px;
+                font-weight: bolder;
             }
             h3{
                 font-size: 1rem;
-                color:rgb(35,36,70);
             }
         }
 

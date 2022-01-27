@@ -4,7 +4,12 @@ import './ItemDetail.scss'
 import { contexto } from './AppContext'
 import { Link } from 'react-router-dom'
 import { errorNotification } from './Notification'
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import BtnHome from './Buttons/BtnHome'
+import BtnCart from './Buttons/BtnCart'
+
+
+
+
 function ItemDetail({ title, id, price, stock, image, description }) {
 
     const [initial, setInitial] = useState(1);
@@ -20,13 +25,15 @@ function ItemDetail({ title, id, price, stock, image, description }) {
     return (
         <div className='item__detail__container'>
             <div className='img__container'>
+
+                <h1>{title}</h1>
                 <img src={image} alt={title} />
+
+                <p>ID Producto:{id}</p>
                 <p>{description}</p>
             </div>
             <div className='right__container'>
                 <div className='title__container'>
-                    <h1>{title}</h1>
-                    <p>ID Producto:{id}</p>
                     <h2>$ {price}.-</h2>
                     <h3>O en 3 cuotas de $ {(price / 3).toFixed(2)}.- con Visa/Mastercard</h3>
                     {showCounter && <ItemCount
@@ -45,14 +52,10 @@ function ItemDetail({ title, id, price, stock, image, description }) {
                         >Editar compra
                         </button>}
 
-                    <Link to={'/'}>
-                        <button className='btn'>Volver </button>
-                    </Link>
-                    <Link to={'/cart'}>
-                        <button className='btn '>
-                            <ShoppingCartIcon /> Carrito
-                        </button>
-                    </Link>
+
+
+                    <BtnHome />
+                    <BtnCart />
 
                     <Link to={'/cart'}>
                         <button className='btn btn__success'>Finalizar compra</button>

@@ -14,11 +14,18 @@ function Form({ setClientData }) {
         <input type="number" name="phone" placeholder='Ingresa tu telefono' onChange={e => setClientData(clientData => ({ ...clientData, phone: e.target.value }))} />
 
 
+        <label htmlFor="adress">Domicilio</label>
+        <input type="text" name="adress" placeholder='Ingresa tu direccion de envio' onChange={e => setClientData(clientData => ({ ...clientData, adress: e.target.value }))} />
+
         <label htmlFor="mail">Mail</label>
         <input type="email" name="mail" placeholder='Ingresa tu correo electronico' onChange={e => setClientData(clientData => ({ ...clientData, mail: e.target.value }))} />
 
-        <label htmlFor="adress">Domicilio</label>
-        <input type="text" name="adress" placeholder='Ingresa tu direccion de envio' onChange={e => setClientData(clientData => ({ ...clientData, adress: e.target.value }))} />
+        <label htmlFor="contact">Metodo de contacto</label>
+        <select name="contact" onChange={e => setClientData(clientData => ({ ...clientData, contact: e.target.value }))} >
+            <option value="whatsapp" >Whatsapp</option>
+            <option value="mail" >Mail</option>
+        </select>
+
     </form>;
 }
 

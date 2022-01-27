@@ -16,15 +16,16 @@
         align-items: center;
         justify-content: center;
         width: 100%;
+        &:hover img{
+            filter: grayscale(10%) contrast(70%) brightness(30%) ;
+        }
         img{
             object-fit: cover;
             height: 50vh;
             width: 100%;
-            filter: grayscale(30%) contrast(60%) brightness(60%) ;
+            filter: grayscale(60%) contrast(60%) brightness(60%) ;
 
-            &:hover{
-                filter: grayscale(10%) contrast(70%) brightness(30%) ;
-            }
+            
             
         }
         h1{

@@ -1,8 +1,8 @@
 import React from 'react'
 import './Item.scss'
 import { Link } from 'react-router-dom'
-
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+
 function Item({ title, id, price, stock, image }) {
 
 

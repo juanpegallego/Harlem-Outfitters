@@ -13,10 +13,10 @@ function ItemListContainer() {
 
     const imagenes = [imageBanner1, imageBanner2, imageBanner3]
     const titles = ['3 Cuotas Sin Interes en toda nuestra tienda', 'Te gustó, lo pediste, te llegó, lo disfrutaste.', '15% de descuento en la 2da unidad']
-    const subtitles = ['Comprando con tarjetas de Banco Macro', 'Disfrutá de comprar sin usuarios ni claves ', 'Comprando durante todo el mes de Enero']
-    const [image, setImage] = useState(imageBanner1)
-    const [title, setTitle] = useState()
-    const [subtitle, setSubtitle] = useState()
+    const subtitles = ['Comprando con tarjetas de Banco Macro', 'Disfrutá de comprar sin usuarios ni claves ', 'Durante todo el mes de Enero']
+    const [image, setImage] = useState(imagenes[0])
+    const [title, setTitle] = useState(titles[0])
+    const [subtitle, setSubtitle] = useState(subtitles[0])
     const [count, setCount] = useState(0)
 
     useEffect(() => {
@@ -30,14 +30,14 @@ function ItemListContainer() {
         }
         const id = setInterval(() => {
             setCount(count + 1)
-        }, 10000);
+        }, 7500);
 
         return () => {
             clearInterval(id)
         }
 
 
-    });
+    }, [count]);
 
 
 

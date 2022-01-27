@@ -29,8 +29,9 @@ function ItemCount({ stock, initial, onAdd }) {
 
     return (
         <div className='itemcount__container'>
-
-            <h4>Stock: {stock} unidades</h4>
+            <h4>
+                {stock > 1 ? ` Stock: ${stock} unidades ` : `Stock: ${stock} unidad.`}
+            </h4>
 
             <div className='controls__container'>
                 <RemoveIcon

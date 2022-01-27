@@ -25,7 +25,7 @@ const CartProvider = ({ children }) => {
         setCarrito([...carrito, producto])
         setCantidad_total(cantidad_total + cantidad)
         setPrecio_total(precio_total + producto.price * cantidad)
-        successNotification(cantidad)
+        successNotification(cantidad, producto.title)
 
     }
 
@@ -36,7 +36,6 @@ const CartProvider = ({ children }) => {
 
         if (carrito.length === 0) {
             limpiarCarrito()
-            console.log('carrito desde adentro del if', carrito);
         }
     }
 

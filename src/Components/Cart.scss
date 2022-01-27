@@ -60,7 +60,7 @@
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
-                :nth-child(1){
+                :nth-child(2){
                     color: white;
                     border: none;
                     background-color: green;
@@ -68,8 +68,7 @@
                         background-color: rgb(0, 83, 0);
                     }
                 }
-                :nth-child(2){
-                    color: red;
+                :nth-child(3){
                     border: none;
                     background-color: transparent;
                     &:hover{

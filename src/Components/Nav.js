@@ -18,7 +18,7 @@ const Nav = ({ links }) => {
                 </Link>
 
                 {links.map((elemento, indice) => {
-                    return <Link key={indice} to={`/categoria/${elemento.toLowerCase()}`} >
+                    return <Link key={indice} to={`/${elemento.toLowerCase()}`} >
                         {elemento}
                     </Link>
                 })}
@@ -26,6 +26,8 @@ const Nav = ({ links }) => {
             </nav>
         )
     } else return null
+
+
 
 
 

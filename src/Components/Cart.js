@@ -6,9 +6,7 @@ import db from './Firebase'
 import { collection, addDoc, getDocs } from "@firebase/firestore"
 import Form from './Form'
 import { successOrder, errorOrder } from './Notification'
-import { Link } from 'react-router-dom'
-
-
+import BtnHome from './Buttons/BtnHome'
 
 
 
@@ -20,14 +18,16 @@ function Cart({ setCartMessage }) {
         name: null,
         phone: null,
         mail: null,
-        adress: null
+        adress: null,
+        contact: 'whatsapp'
     })
     const [order, setOrder] = useState({
         buyer: {
             name: null,
             phone: null,
             mail: null,
-            adress: null
+            adress: null,
+            contact: 'whatsapp'
         },
         items: [],
         date: '',
@@ -44,7 +44,8 @@ function Cart({ setCartMessage }) {
         if (order.buyer.name !== null &&
             order.buyer.phone !== null &&
             order.buyer.mail !== null &&
-            order.buyer.adress !== null
+            order.buyer.adress !== null &&
+            order.buyer.contact !== null
         ) {
             setOrderInDB(order)
         }
@@ -54,6 +55,7 @@ function Cart({ setCartMessage }) {
     }
 
     const setOrderInDB = async (order) => {
+
         try {
             await addDoc(collection(db, 'pedidos'), {
                 'Cliente': order.buyer,
@@ -67,28 +69,28 @@ function Cart({ setCartMessage }) {
 
 
         } catch (e) {
-            errorOrder('Hubo un error, vuelva a intentarlo');
+            errorOrder('Hubo un error, vuelva a intentarlo', e);
         }
     }
 
 
     const getOrderId = () => {
+        console.log('getting order ID');
         const coleccionPedidos = collection(db, "pedidos")
         const pedido = getDocs(coleccionPedidos);
 
         pedido
             .then((resultado) => {
                 const data = resultado.docs.map(doc => ({ id: doc.id, ...doc.data() }))
-                const orderId = data[0].id.slice(0, 5)
+                const orderId = data[0].id.slice(0, 5);
+                const metodoContacto = data[0].Cliente.contact
                 setOrderFinished(true);
-                successOrder(orderId);
-                setCartMessage(`Recuerde enviarnos el codigo de reserva: ${orderId} a nuestro whatsapp para continuar con el pago.`)
+                successOrder(orderId, metodoContacto);
+                setCartMessage(`Recuerde que  el codigo de reserva: ${orderId} es el que le enviaremos por ${metodoContacto} para continuar con el pago.`)
                 limpiarCarrito()
-
-
             })
             .catch((error) => {
-                console.log(error);
+                errorOrder(error);
             })
     }
 
@@ -110,7 +112,6 @@ function Cart({ setCartMessage }) {
 
     return (
         <div className='cart__container'>
-
             <div className='selected__products__container'>
                 <h1>Tus productos</h1>
                 {carrito.length > 0 && carrito.map(producto =>
@@ -124,8 +125,6 @@ function Cart({ setCartMessage }) {
                         eliminarProducto={eliminarProducto}
                     />
                 )}
-
-
             </div>
             <article className='form__row__container'>
 
@@ -142,12 +141,11 @@ function Cart({ setCartMessage }) {
 
                     {orderFinished ?
                         <div className='cart__navegation_btn'>
-                            <Link to={'/'}>
-                                <button>Volver al inicio</button>
-                            </Link>
+                            <BtnHome />
                         </div>
                         :
                         <div className='cart__navegation_btn'>
+                            <BtnHome />
                             <button onClick={confirmBuy}>Finalizar compra</button>
                             <button onClick={limpiarCarrito}>Vaciar carrito</button>
                         </div>

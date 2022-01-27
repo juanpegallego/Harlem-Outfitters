@@ -10,6 +10,8 @@
     flex-direction: column;
     h1{
         font-size: 2rem;
+        text-align: center;
+        width: 80%;
     }
     button{
         height: 50px;
@@ -20,10 +22,10 @@
         border: none;
         min-width: 200px;
         font-weight: bolder;
-
+        background-color: rgb(40, 52, 116);
+        color: white;
         &:hover{
-            background-color: rgb(40, 52, 116);
-            color: white;
+            background-color: rgb(19, 24, 54);
         }
     }
 }

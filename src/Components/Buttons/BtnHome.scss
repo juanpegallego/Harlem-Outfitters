@@ -1,0 +1,19 @@
+.btn__home{
+    border: 1px solid rgb(40, 52, 116);
+    font-size: 1rem;
+    padding: 8px 12px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 150px;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color:rgb(40, 52, 116);
+    &:hover{
+        background-color: rgb(40, 52, 116);
+        color: white;
+    }
+}
+

@@ -1,14 +1,14 @@
 import Swal from 'sweetalert2'
 
 
-const successNotification = (cantidad) => {
+const successNotification = (cantidad, title) => {
 
     let addedToCartMessage = ''
 
     if (cantidad > 1) {
         addedToCartMessage = `${cantidad} unidades.`
     } else {
-        addedToCartMessage = `${cantidad} unidad.`
+        addedToCartMessage = `${cantidad} unidad ${title}.`
     }
 
     Swal.fire({
@@ -20,12 +20,12 @@ const successNotification = (cantidad) => {
     })
 }
 
-const successOrder = (cantidad) => {
+const successOrder = (cantidad, metodoContacto) => {
     Swal.fire({
         title: 'Pedido procesado correctamente',
-        text: `El codigo de su orden es ${cantidad}, este es el codigo que nos deberas enviar por Whatsapp .`,
+        text: `El codigo de su orden es ${cantidad}, este  codigo  te enviaremos por ${metodoContacto} .`,
         icon: 'success',
-        confirmButtonText: 'Continuar'
+        confirmButtonText: 'Finalizar'
 
     })
 }

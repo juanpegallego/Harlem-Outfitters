@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react'
 import Cart from './Cart';
 import { contexto } from './AppContext'
-import { Link } from 'react-router-dom'
 import './CartContainer.scss'
+import BtnHome from './Buttons/BtnHome';
 
 
 
@@ -18,9 +18,7 @@ function CartContainer() {
             :
             <div className='empty__cart'>
                 <h1> {cartMessage} </h1>
-                <Link to={'/'}>
-                    <button >Volver al inicio</button>
-                </Link>
+                <BtnHome />
             </div>
 
         }

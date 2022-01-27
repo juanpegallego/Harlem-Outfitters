@@ -15,19 +15,19 @@ function CategoriesBanner() {
 
         <Link to={'/categories/camisetas'}>
             <div className='categories__card'>
-                <img src={imgCamisetas} alt="" />h
+                <img src={imgCamisetas} alt={imgCamisetas} />
                 <h1>Camisetas</h1>
             </div>
         </Link>
         <Link to={'/categories/accesorios'}>
             <div className='categories__card'>
-                <img src={imgMochilas} alt="" />h
+                <img src={imgMochilas} alt={imgMochilas} />
                 <h1>Accesorios</h1>
             </div>
         </Link>
         <Link to={'/categories/calzado'}>
             <div className='categories__card'>
-                <img src={imgCalzado} alt="" />h
+                <img src={imgCalzado} alt={imgCalzado} />
                 <h1>Calzado</h1>
             </div>
         </Link>

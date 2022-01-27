@@ -11,8 +11,6 @@ import WhatsappWidget from './Components/WhatsappWidget';
 
 function App() {
 
-  const links = ['Como comprar', 'Nosotros']
-  const titulo = 'Harlem Outfitters'
 
 
 
@@ -22,10 +20,7 @@ function App() {
     <CartProvider>
       <BrowserRouter>
         <WhatsappWidget />
-        <Header
-          links={links}
-          titulo={titulo}
-        />
+        <Header />
 
         <Main />
         <Footer />
