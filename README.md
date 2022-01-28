@@ -3,7 +3,7 @@
 
 # Harlem Outfitters
 
-Este proyecto fue creado con create-react-app. Es un proyecto del curso React JS de CODER HOUSE. El proyecto es una tienda virtual que en principio consume informacion de una api llamada Fakestoreapi (https://fakestoreapi.com/)
+Este proyecto es una Tienda Virtual de la marca Harlem Outfitters. Fue creado con create-react-app y forma parte de un proyecto del curso React JS de CODER HOUSE. El proyecto es una tienda virtual que en principio consume informacion de una api llamada Fakestoreapi (https://fakestoreapi.com/)
 
 ## Dependencias Utilizadas
 
