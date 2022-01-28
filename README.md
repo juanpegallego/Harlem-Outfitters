@@ -1,3 +1,6 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/34e7e700-c41a-4371-94d8-2090692dc50e/deploy-status)](https://app.netlify.com/sites/thirsty-bhabha-a5c2fc/deploys)
+
+
 # Harlem Outfitters
 
 Este proyecto fue creado con create-react-app. Es un proyecto del curso React JS de CODER HOUSE. El proyecto es una tienda virtual que en principio consume informacion de una api llamada Fakestoreapi (https://fakestoreapi.com/)
