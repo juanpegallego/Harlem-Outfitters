@@ -1,7 +1,9 @@
 
 Deploy en Netlify. Verificacion:
-[![Netlify Status](https://api.netlify.com/api/v1/badges/434826a7-b0db-433c-9158-00dce9b25a3a/deploy-status)](https://app.netlify.com/sites/angry-dijkstra-c3ba25/deploys)
-[Link al sitio](https://angry-dijkstra-c3ba25.netlify.app/)
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/51d90fd2-28b4-41ea-987d-50e5d8e4c02f/deploy-status)](https://app.netlify.com/sites/gracious-snyder-447485/deploys)
+
+[Link al sitio](https://gracious-snyder-447485.netlify.app/)
 
 # Harlem Outfitters
 
